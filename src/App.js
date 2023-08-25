@@ -6,6 +6,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState } from "react";
 
 export default function App() {
+  const [apiData, setApiData] = useState({});
   const [weather, setWeather] = useState();
   useEffect(() => {
     async function fetchWeather() {
@@ -14,6 +15,7 @@ export default function App() {
       );
       const data = await response.json();
       setWeather(data.isGoodWeather);
+      setApiData(data);
     }
     fetchWeather();
   }, []);
@@ -26,10 +28,12 @@ export default function App() {
     setActivities([...activities, { id: uid(), ...activity }]);
   }
 
+  console.log(apiData);
+
   return (
     <main>
       <Form onAddActivity={handleAddActivity} />
-      <List activities={activities} weather={weather} />
+      <List activities={activities} weather={weather} apiData={apiData} />
     </main>
   );
 }
