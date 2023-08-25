@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Form from "./components/Form/Form.js";
+import { useState } from "react";
+import { uid } from "uid";
 
-function App() {
+export default function App() {
+  const [activities, setActivities] = useState([]);
+
+  function handleAddActivity(activity) {
+    setActivities([...activities, { id: uid(), ...activity }]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Form onAddActivity={handleAddActivity} />
+    </main>
   );
 }
-
-export default App;
