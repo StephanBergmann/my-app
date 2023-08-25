@@ -4,7 +4,7 @@ export default function Form({ onAddActivity }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     // console.log(data);
-    // onAddActivity(data);
+    onAddActivity(data);
     event.target.reset();
     // console.log(event.target.elements);
     event.target.elements[0].focus();
