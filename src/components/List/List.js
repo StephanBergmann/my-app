@@ -10,7 +10,12 @@ export default function List({ activities, weather, apiData }) {
               return activity.isForGoodWeather === weather;
             })
             .map((_activity) => {
-              return <li key={_activity.id}>{_activity.name}</li>;
+              return (
+                <li key={_activity.id}>
+                  {_activity.name}
+                  <button type="button">x</button>
+                </li>
+              );
             })}
         </ul>
       </>
@@ -26,7 +31,12 @@ export default function List({ activities, weather, apiData }) {
             return activity.isForGoodWeather !== weather;
           })
           .map((_activity) => {
-            return <li key={_activity.id}>{_activity.name}</li>;
+            return (
+              <li key={_activity.id}>
+                {_activity.name}
+                <button type="button">x</button>
+              </li>
+            );
           })}
       </ul>
     </>

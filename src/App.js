@@ -28,8 +28,6 @@ export default function App() {
     setActivities([...activities, { id: uid(), ...activity }]);
   }
 
-  console.log(apiData);
-
   return (
     <main>
       <Form onAddActivity={handleAddActivity} />
