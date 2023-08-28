@@ -28,10 +28,22 @@ export default function App() {
     setActivities([...activities, { id: uid(), ...activity }]);
   }
 
+  function handleDeleteActivity(activityId) {
+    const deletedItemsList = activities.filter((activity) => {
+      return activity.id !== activityId;
+    });
+    setActivities(deletedItemsList);
+  }
+
   return (
     <main>
       <Form onAddActivity={handleAddActivity} />
-      <List activities={activities} weather={weather} apiData={apiData} />
+      <List
+        activities={activities}
+        weather={weather}
+        apiData={apiData}
+        onDeleteActivity={handleDeleteActivity}
+      />
     </main>
   );
 }

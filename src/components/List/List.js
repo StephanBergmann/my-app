@@ -1,4 +1,9 @@
-export default function List({ activities, weather, apiData }) {
+export default function List({
+  activities,
+  weather,
+  apiData,
+  onDeleteActivity,
+}) {
   if (weather === true) {
     return (
       <>
@@ -13,7 +18,12 @@ export default function List({ activities, weather, apiData }) {
               return (
                 <li key={_activity.id}>
                   {_activity.name}
-                  <button type="button">x</button>
+                  <button
+                    type="button"
+                    onClick={() => onDeleteActivity(_activity.id)}
+                  >
+                    x
+                  </button>
                 </li>
               );
             })}
@@ -34,7 +44,12 @@ export default function List({ activities, weather, apiData }) {
             return (
               <li key={_activity.id}>
                 {_activity.name}
-                <button type="button">x</button>
+                <button
+                  type="button"
+                  onClick={() => onDeleteActivity(_activity.id)}
+                >
+                  x
+                </button>
               </li>
             );
           })}
