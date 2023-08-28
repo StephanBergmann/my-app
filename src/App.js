@@ -17,7 +17,10 @@ export default function App() {
       setWeather(data.isGoodWeather);
       setApiData(data);
     }
-    fetchWeather();
+    const interval = setInterval(() => {
+      fetchWeather();
+    }, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   const [activities, setActivities] = useLocalStorageState("activity", {
